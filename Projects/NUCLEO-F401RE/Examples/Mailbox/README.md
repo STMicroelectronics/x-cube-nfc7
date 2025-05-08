@@ -39,8 +39,6 @@ NFC, NDEF, EEPROM, I2C, ST25DV64KC
  
  - main.c                 Main program body
  
- - stm32_bus_ex.c         Source file for GNSS1A1 Bus Extension
- 
  - stm32**xx_hal_msp.c    Source code for MSP Initialization and de-Initialization
 
  - stm32**xx_it.c         Source code for interrupt Service Routines

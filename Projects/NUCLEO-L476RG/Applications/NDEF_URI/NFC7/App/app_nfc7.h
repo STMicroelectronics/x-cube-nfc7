@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * File Name          :  stmicroelectronics_x-cube-nfc7_1_0_1.h
+  * File Name          :  stmicroelectronics_x-cube-nfc7_2_0_0.h
   * Description        : This file provides code for the configuration
-  *                      of the STMicroelectronics.X-CUBE-NFC7.1.0.1 instances.
+  *                      of the STMicroelectronics.X-CUBE-NFC7.2.0.0 instances.
   ******************************************************************************
   * @attention
   *
@@ -20,7 +20,7 @@
 #ifndef APP_NFC7_H
 #define APP_NFC7_H
 #ifdef __cplusplus
- extern "C" {
+extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/

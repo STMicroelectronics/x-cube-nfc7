@@ -112,14 +112,14 @@
 			<locationURI>PARENT-5-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_rcc_ex.c</locationURI>
 		</link>
 		<link>
-			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_tim.c</name>
+			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_uart.c</name>
 			<type>1</type>
-			<locationURI>PARENT-5-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_tim.c</locationURI>
+			<locationURI>PARENT-5-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_uart.c</locationURI>
 		</link>
 		<link>
-			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_tim_ex.c</name>
+			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_uart_ex.c</name>
 			<type>1</type>
-			<locationURI>PARENT-5-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_tim_ex.c</locationURI>
+			<locationURI>PARENT-5-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_uart_ex.c</locationURI>
 		</link>
 		<link>
 			<name>Application/User/Core/main.c</name>
@@ -135,6 +135,11 @@
 			<name>Application/User/Core/stm32l0xx_it.c</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/Core/Src/stm32l0xx_it.c</locationURI>
+		</link>
+		<link>
+			<name>Application/User/Core/stm32l0xx_nucleo.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Core/Src/stm32l0xx_nucleo.c</locationURI>
 		</link>
 		<link>
 			<name>Application/User/Core/stm32l0xx_nucleo_bus.c</name>
@@ -167,89 +172,34 @@
 			<locationURI>PARENT-1-PROJECT_LOC/NFC7/App/app_nfc7.c</locationURI>
 		</link>
 		<link>
-			<name>Application/User/NFC7/Target/lib_NDEF_config.c</name>
+			<name>Application/User/NFC7/Target/ndef_nfcv_wrapper.c</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/NFC7/Target/lib_NDEF_config.c</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/NFC7/Target/ndef_nfcv_wrapper.c</locationURI>
 		</link>
 		<link>
-			<name>Middlewares/lib_nfc7/Wireless/lib_nfc7/Core/lib_NDEF.c</name>
+			<name>Middlewares/MID_LIBRARY/Wireless/NDEF_LIB/ndef_message.c</name>
 			<type>1</type>
-			<locationURI>PARENT-5-PROJECT_LOC/Middlewares/ST/lib_nfc7/lib_NDEF/Core/src/lib_NDEF.c</locationURI>
+			<locationURI>PARENT-5-PROJECT_LOC/Middlewares/ST/NDEF/Src/message/ndef_message.c</locationURI>
 		</link>
 		<link>
-			<name>Middlewares/lib_nfc7/Wireless/lib_nfc7/Core/lib_NDEF_AAR.c</name>
+			<name>Middlewares/MID_LIBRARY/Wireless/NDEF_LIB/ndef_record.c</name>
 			<type>1</type>
-			<locationURI>PARENT-5-PROJECT_LOC/Middlewares/ST/lib_nfc7/lib_NDEF/Core/src/lib_NDEF_AAR.c</locationURI>
+			<locationURI>PARENT-5-PROJECT_LOC/Middlewares/ST/NDEF/Src/message/ndef_record.c</locationURI>
 		</link>
 		<link>
-			<name>Middlewares/lib_nfc7/Wireless/lib_nfc7/Core/lib_NDEF_Bluetooth.c</name>
+			<name>Middlewares/MID_LIBRARY/Wireless/NDEF_LIB/ndef_type_empty.c</name>
 			<type>1</type>
-			<locationURI>PARENT-5-PROJECT_LOC/Middlewares/ST/lib_nfc7/lib_NDEF/Core/src/lib_NDEF_Bluetooth.c</locationURI>
+			<locationURI>PARENT-5-PROJECT_LOC/Middlewares/ST/NDEF/Src/message/ndef_type_empty.c</locationURI>
 		</link>
 		<link>
-			<name>Middlewares/lib_nfc7/Wireless/lib_nfc7/Core/lib_NDEF_Email.c</name>
+			<name>Middlewares/MID_LIBRARY/Wireless/NDEF_LIB/ndef_type_uri.c</name>
 			<type>1</type>
-			<locationURI>PARENT-5-PROJECT_LOC/Middlewares/ST/lib_nfc7/lib_NDEF/Core/src/lib_NDEF_Email.c</locationURI>
+			<locationURI>PARENT-5-PROJECT_LOC/Middlewares/ST/NDEF/Src/message/ndef_type_uri.c</locationURI>
 		</link>
 		<link>
-			<name>Middlewares/lib_nfc7/Wireless/lib_nfc7/Core/lib_NDEF_Geo.c</name>
+			<name>Middlewares/MID_LIBRARY/Wireless/NDEF_LIB/ndef_types.c</name>
 			<type>1</type>
-			<locationURI>PARENT-5-PROJECT_LOC/Middlewares/ST/lib_nfc7/lib_NDEF/Core/src/lib_NDEF_Geo.c</locationURI>
-		</link>
-		<link>
-			<name>Middlewares/lib_nfc7/Wireless/lib_nfc7/Core/lib_NDEF_Handover.c</name>
-			<type>1</type>
-			<locationURI>PARENT-5-PROJECT_LOC/Middlewares/ST/lib_nfc7/lib_NDEF/Core/src/lib_NDEF_Handover.c</locationURI>
-		</link>
-		<link>
-			<name>Middlewares/lib_nfc7/Wireless/lib_nfc7/Core/lib_NDEF_MyApp.c</name>
-			<type>1</type>
-			<locationURI>PARENT-5-PROJECT_LOC/Middlewares/ST/lib_nfc7/lib_NDEF/Core/src/lib_NDEF_MyApp.c</locationURI>
-		</link>
-		<link>
-			<name>Middlewares/lib_nfc7/Wireless/lib_nfc7/Core/lib_NDEF_SMS.c</name>
-			<type>1</type>
-			<locationURI>PARENT-5-PROJECT_LOC/Middlewares/ST/lib_nfc7/lib_NDEF/Core/src/lib_NDEF_SMS.c</locationURI>
-		</link>
-		<link>
-			<name>Middlewares/lib_nfc7/Wireless/lib_nfc7/Core/lib_NDEF_Text.c</name>
-			<type>1</type>
-			<locationURI>PARENT-5-PROJECT_LOC/Middlewares/ST/lib_nfc7/lib_NDEF/Core/src/lib_NDEF_Text.c</locationURI>
-		</link>
-		<link>
-			<name>Middlewares/lib_nfc7/Wireless/lib_nfc7/Core/lib_NDEF_URI.c</name>
-			<type>1</type>
-			<locationURI>PARENT-5-PROJECT_LOC/Middlewares/ST/lib_nfc7/lib_NDEF/Core/src/lib_NDEF_URI.c</locationURI>
-		</link>
-		<link>
-			<name>Middlewares/lib_nfc7/Wireless/lib_nfc7/Core/lib_NDEF_Vcard.c</name>
-			<type>1</type>
-			<locationURI>PARENT-5-PROJECT_LOC/Middlewares/ST/lib_nfc7/lib_NDEF/Core/src/lib_NDEF_Vcard.c</locationURI>
-		</link>
-		<link>
-			<name>Middlewares/lib_nfc7/Wireless/lib_nfc7/Core/lib_NDEF_Wifi.c</name>
-			<type>1</type>
-			<locationURI>PARENT-5-PROJECT_LOC/Middlewares/ST/lib_nfc7/lib_NDEF/Core/src/lib_NDEF_Wifi.c</locationURI>
-		</link>
-		<link>
-			<name>Middlewares/lib_nfc7/Wireless/lib_nfc7/Core/lib_wrapper.c</name>
-			<type>1</type>
-			<locationURI>PARENT-5-PROJECT_LOC/Middlewares/ST/lib_nfc7/lib_NDEF/Core/src/lib_wrapper.c</locationURI>
-		</link>
-		<link>
-			<name>Middlewares/lib_nfc7/Wireless/lib_nfc7/Core/tagtype3_wrapper.c</name>
-			<type>1</type>
-			<locationURI>PARENT-5-PROJECT_LOC/Middlewares/ST/lib_nfc7/lib_NDEF/Core/src/tagtype3_wrapper.c</locationURI>
-		</link>
-		<link>
-			<name>Middlewares/lib_nfc7/Wireless/lib_nfc7/Core/tagtype4_wrapper.c</name>
-			<type>1</type>
-			<locationURI>PARENT-5-PROJECT_LOC/Middlewares/ST/lib_nfc7/lib_NDEF/Core/src/tagtype4_wrapper.c</locationURI>
-		</link>
-		<link>
-			<name>Middlewares/lib_nfc7/Wireless/lib_nfc7/Core/tagtype5_wrapper.c</name>
-			<type>1</type>
-			<locationURI>PARENT-5-PROJECT_LOC/Middlewares/ST/lib_nfc7/lib_NDEF/Core/src/tagtype5_wrapper.c</locationURI>
+			<locationURI>PARENT-5-PROJECT_LOC/Middlewares/ST/NDEF/Src/message/ndef_types.c</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

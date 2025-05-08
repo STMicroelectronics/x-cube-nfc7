@@ -349,8 +349,9 @@
           <state>$PROJ_DIR$/../../../../../Drivers/CMSIS/Include</state>
           <state>$PROJ_DIR$/../../../../../Drivers/BSP/Components/st25dvxxkc</state>
           <state>$PROJ_DIR$/../../../../../Drivers/BSP/NFC07A1</state>
-          <state>$PROJ_DIR$/../../../../../Middlewares/ST/lib_nfc7/lib_NDEF/Core/inc</state>
-          <state>$PROJ_DIR$/../../../../../Middlewares/ST/lib_nfc7/Common/inc</state>
+          <state>$PROJ_DIR$/../../../../../Middlewares/ST/NDEF/Inc/message</state>
+          <state>$PROJ_DIR$/../../../../../Middlewares/ST/NDEF/Inc/poller</state>
+          <state>$PROJ_DIR$/../../../../../Middlewares/ST/NDEF/Inc</state>
         </option>
         <option>
           <name>CCStdIncCheck</name>
@@ -594,7 +595,7 @@
         </option>
         <option>
           <name>AOutputFile</name>
-          <state>$FILE_BNAME$.o</state>
+          <state></state>
         </option>
         <option>
           <name>ALimitErrorsCheck</name>
@@ -640,7 +641,7 @@
         <option>
           <name>OOCOutputFormat</name>
           <version>3</version>
-          <state>3</state>
+          <state>1</state>
         </option>
         <option>
           <name>OCOutputOverride</name>
@@ -648,7 +649,7 @@
         </option>
         <option>
           <name>OOCOutputFile</name>
-          <state>../../../Binary/NDEF_URI.bin</state>
+          <state>NDEF_URI.hex</state>
         </option>
         <option>
           <name>OOCCommandLineProducer</name>
@@ -1090,6 +1091,9 @@
           <name>$PROJ_DIR$\..\Core\Src\stm32f4xx_nucleo_bus.c</name>
         </file>
         <file>
+          <name>$PROJ_DIR$\..\Core\Src\stm32f4xx_nucleo.c</name>
+        </file>
+        <file>
           <name>$PROJ_DIR$\..\Core\Src\stm32f4xx_it.c</name>
         </file>
         <file>
@@ -1107,7 +1111,7 @@
         <group>
           <name>Target</name>
           <file>
-            <name>$PROJ_DIR$\..\NFC7\Target\lib_NDEF_config.c</name>
+            <name>$PROJ_DIR$\..\NFC7\Target\ndef_nfcv_wrapper.c</name>
           </file>
         </group>
       </group>
@@ -1190,66 +1194,30 @@
         <name>$PROJ_DIR$\..\..\..\..\..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_exti.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim_ex.c</name>
+        <name>$PROJ_DIR$\..\..\..\..\..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_uart.c</name>
       </file>
     </group>
   </group>
   <group>
     <name>Middlewares</name>
     <group>
-      <name>lib_nfc7</name>
+      <name>MID_LIBRARY</name>
       <group>
-        <name>Wireless/lib_nfc7/Core</name>
+        <name>Wireless/NDEF_LIB</name>
         <file>
-          <name>$PROJ_DIR$\..\..\..\..\..\Middlewares\ST\lib_nfc7\lib_NDEF\Core\src\lib_NDEF.c</name>
+          <name>$PROJ_DIR$\..\..\..\..\..\Middlewares\ST\NDEF\Src\message\ndef_message.c</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\..\..\..\Middlewares\ST\lib_nfc7\lib_NDEF\Core\src\lib_NDEF_AAR.c</name>
+          <name>$PROJ_DIR$\..\..\..\..\..\Middlewares\ST\NDEF\Src\message\ndef_record.c</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\..\..\..\Middlewares\ST\lib_nfc7\lib_NDEF\Core\src\lib_NDEF_Bluetooth.c</name>
+          <name>$PROJ_DIR$\..\..\..\..\..\Middlewares\ST\NDEF\Src\message\ndef_type_uri.c</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\..\..\..\Middlewares\ST\lib_nfc7\lib_NDEF\Core\src\lib_NDEF_Email.c</name>
+          <name>$PROJ_DIR$\..\..\..\..\..\Middlewares\ST\NDEF\Src\message\ndef_types.c</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\..\..\..\Middlewares\ST\lib_nfc7\lib_NDEF\Core\src\lib_NDEF_Geo.c</name>
-        </file>
-        <file>
-          <name>$PROJ_DIR$\..\..\..\..\..\Middlewares\ST\lib_nfc7\lib_NDEF\Core\src\lib_NDEF_Handover.c</name>
-        </file>
-        <file>
-          <name>$PROJ_DIR$\..\..\..\..\..\Middlewares\ST\lib_nfc7\lib_NDEF\Core\src\lib_NDEF_MyApp.c</name>
-        </file>
-        <file>
-          <name>$PROJ_DIR$\..\..\..\..\..\Middlewares\ST\lib_nfc7\lib_NDEF\Core\src\lib_NDEF_SMS.c</name>
-        </file>
-        <file>
-          <name>$PROJ_DIR$\..\..\..\..\..\Middlewares\ST\lib_nfc7\lib_NDEF\Core\src\lib_NDEF_Text.c</name>
-        </file>
-        <file>
-          <name>$PROJ_DIR$\..\..\..\..\..\Middlewares\ST\lib_nfc7\lib_NDEF\Core\src\lib_NDEF_URI.c</name>
-        </file>
-        <file>
-          <name>$PROJ_DIR$\..\..\..\..\..\Middlewares\ST\lib_nfc7\lib_NDEF\Core\src\lib_NDEF_Vcard.c</name>
-        </file>
-        <file>
-          <name>$PROJ_DIR$\..\..\..\..\..\Middlewares\ST\lib_nfc7\lib_NDEF\Core\src\lib_NDEF_Wifi.c</name>
-        </file>
-        <file>
-          <name>$PROJ_DIR$\..\..\..\..\..\Middlewares\ST\lib_nfc7\lib_NDEF\Core\src\lib_wrapper.c</name>
-        </file>
-        <file>
-          <name>$PROJ_DIR$\..\..\..\..\..\Middlewares\ST\lib_nfc7\lib_NDEF\Core\src\tagtype3_wrapper.c</name>
-        </file>
-        <file>
-          <name>$PROJ_DIR$\..\..\..\..\..\Middlewares\ST\lib_nfc7\lib_NDEF\Core\src\tagtype4_wrapper.c</name>
-        </file>
-        <file>
-          <name>$PROJ_DIR$\..\..\..\..\..\Middlewares\ST\lib_nfc7\lib_NDEF\Core\src\tagtype5_wrapper.c</name>
+          <name>$PROJ_DIR$\..\..\..\..\..\Middlewares\ST\NDEF\Src\message\ndef_type_empty.c</name>
         </file>
       </group>
     </group>

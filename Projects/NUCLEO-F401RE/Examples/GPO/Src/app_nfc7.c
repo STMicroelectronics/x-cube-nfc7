@@ -1,9 +1,8 @@
-
 /**
   ******************************************************************************
   * File Name          :  app_nfc7.c
   * Description        : This file provides code for the configuration
-  *                      of the STMicroelectronics.X-CUBE-NFC7.1.0.1 instances.
+  *                      of the STMicroelectronics.X-CUBE-NFC7.2.0.0 instances.
   ******************************************************************************
   * @attention
   *
@@ -18,7 +17,7 @@
   */
 
 #ifdef __cplusplus
- extern "C" {
+extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
@@ -27,6 +26,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "nfc07a1_nfctag.h"
+#include <stdio.h>
 
 /** @defgroup ST25_Nucleo
   * @{
@@ -105,6 +105,13 @@ void MX_NFC7_GPO_Init(void)
   NFC07A1_LED_On( YELLOW_LED );
   HAL_Delay( 300 );
 
+  /* Init UART for display message on console */
+  BSP_COM_Init(COM1);
+
+  printf("------------------------------------------");
+  printf("\n\r***** Welcome to x-cube-nfc7 example *****");
+  printf("\n\r------------------------------------------");
+
   /* Init ST25DVXXKC driver */
   while( NFC07A1_NFCTAG_Init(NFC07A1_NFCTAG_INSTANCE) != NFCTAG_OK );
 
@@ -116,6 +123,8 @@ void MX_NFC7_GPO_Init(void)
 
   /* Set GPO Configuration */
   NFC07A1_NFCTAG_ConfigIT(NFC07A1_NFCTAG_INSTANCE,ST25DVXXKC_GPO1_ENABLE_MASK | ST25DVXXKC_GPO1_FIELDCHANGE_MASK );
+
+  printf("\n\r\n\rST25DVxxKC initialization succeeded!\n\r");
 
   /* Init done */
   NFC07A1_LED_Off( GREEN_LED );
@@ -141,10 +150,12 @@ void MX_NFC7_GPO_Process(void)
       if( fieldpresence == ST25DVXXKC_FIELD_ON )
       {
         NFC07A1_LED_On( GREEN_LED );
+		printf("\n\rGPO activated, Field on detected.");
       }
       else
       {
         NFC07A1_LED_Off( GREEN_LED );
+		printf("\n\rGPO activated, Field off detected.");
       }
       GPOActivated = 0;
     }

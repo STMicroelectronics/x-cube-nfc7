@@ -73,8 +73,8 @@ typedef struct
 #define MCU_FW_VERSION_MINOR              0
 #define MCU_FW_VERSION_REVISION           0
 #define MCU_FW_VERSION                    STRINGIZE(MCU_FW_VERSION_MAJOR) "." \
-                                          STRINGIZE(MCU_FW_VERSION_MINOR) "." \
-                                          STRINGIZE(MCU_FW_VERSION_REVISION)
+  STRINGIZE(MCU_FW_VERSION_MINOR) "." \
+  STRINGIZE(MCU_FW_VERSION_REVISION)
 
 /* Exported functions ------------------------------------------------------- */
 

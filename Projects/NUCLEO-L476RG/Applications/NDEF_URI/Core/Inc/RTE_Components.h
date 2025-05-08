@@ -7,7 +7,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2021 STMicroelectronics.
+  * Copyright (c) 2025 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -22,10 +22,9 @@
 #define  __RTE_COMPONENTS_H__
 
 /* Defines ------------------------------------------------------------------*/
-/* STMicroelectronics.X-CUBE-NFC7.1.0.1 */
+/* STMicroelectronics.X-CUBE-NFC7.2.0.0 */
 #define NFC07A1_URI_DEMO
 #define LIB_NDEF
-#define Interface
 #define NFC07A1
 
 #endif /* __RTE_COMPONENTS_H__ */

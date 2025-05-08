@@ -3,7 +3,7 @@
   ******************************************************************************
   * File Name          :  app_nfc7.c
   * Description        : This file provides code for the configuration
-  *                      of the STMicroelectronics.X-CUBE-NFC7.1.0.1 instances.
+  *                      of the STMicroelectronics.X-CUBE-NFC7.2.0.0 instances.
   ******************************************************************************
   * @attention
   *
@@ -103,40 +103,40 @@ void MX_NFC7_MAILBOX_Init(void)
   NFC07A1_LED_Init(BLUE_LED);
   NFC07A1_LED_Init(YELLOW_LED);
 
-  NFC07A1_LED_On( GREEN_LED );
-  HAL_Delay( 300 );
-  NFC07A1_LED_On( BLUE_LED );
-  HAL_Delay( 300 );
-  NFC07A1_LED_On( YELLOW_LED );
-  HAL_Delay( 300 );
+  NFC07A1_LED_On(GREEN_LED);
+  HAL_Delay(300);
+  NFC07A1_LED_On(BLUE_LED);
+  HAL_Delay(300);
+  NFC07A1_LED_On(YELLOW_LED);
+  HAL_Delay(300);
 
-   /* Init UART for display message on console */
+  /* Init UART for display message on console */
   BSP_COM_Init(COM1);
 
-  printf( "----------------------------------------" );
-  printf( "\n\r*****Welcome to x-cube-nfc7 example*****" );
-  printf( "\n\r----------------------------------------" );
+  printf("------------------------------------------");
+  printf("\n\r***** Welcome to x-cube-nfc7 example *****");
+  printf("\n\r------------------------------------------");
 
-  /* Init ST25DVXXKC driver */
-  while( NFC07A1_NFCTAG_Init(NFC07A1_NFCTAG_INSTANCE) != NFCTAG_OK );
+  /* Init ST25DVxxKC driver */
+  while(NFC07A1_NFCTAG_Init(NFC07A1_NFCTAG_INSTANCE) != NFCTAG_OK);
 
   /* Init done */
-  NFC07A1_LED_Off( GREEN_LED );
-  HAL_Delay( 300 );
-  NFC07A1_LED_Off( BLUE_LED );
-  HAL_Delay( 300 );
-  NFC07A1_LED_Off( YELLOW_LED );
-  HAL_Delay( 300 );
+  NFC07A1_LED_Off(GREEN_LED);
+  HAL_Delay(300);
+  NFC07A1_LED_Off(BLUE_LED);
+  HAL_Delay(300);
+  NFC07A1_LED_Off(YELLOW_LED);
+  HAL_Delay(300);
 
   printf( "\n\r\n\r This program will show you basic example on how to use the mailbox on I2C side" );
 
   /* If not activated, activate Mailbox, as long as MB is ON EEPROM is not available */
   NFC07A1_NFCTAG_ReadMBMode(NFC07A1_NFCTAG_INSTANCE, &MB_mode);
-  if( MB_mode == ST25DVXXKC_DISABLE )
+  if(MB_mode == ST25DVXXKC_DISABLE)
   {
     /* You need to present password before changing static configuration */
-    NFC07A1_NFCTAG_ReadI2CSecuritySession_Dyn(NFC07A1_NFCTAG_INSTANCE, &i2csso );
-    if( i2csso == ST25DVXXKC_SESSION_CLOSED )
+    NFC07A1_NFCTAG_ReadI2CSecuritySession_Dyn(NFC07A1_NFCTAG_INSTANCE, &i2csso);
+    if(i2csso == ST25DVXXKC_SESSION_CLOSED)
     {
       /* if I2C session is closed, present password to open session */
       passwd.MsbPasswd = 0; /* Default value for password */
@@ -148,7 +148,7 @@ void MX_NFC7_MAILBOX_Init(void)
     /* Close session as dynamic register doesn't need open session for modification */
     passwd.MsbPasswd = 123;
     passwd.LsbPasswd = 123;
-	NFC07A1_NFCTAG_PresentI2CPassword(NFC07A1_NFCTAG_INSTANCE, passwd );
+	NFC07A1_NFCTAG_PresentI2CPassword(NFC07A1_NFCTAG_INSTANCE, passwd);
   }
 
   /* Enable Mailbox in dynamique register */
@@ -157,28 +157,28 @@ void MX_NFC7_MAILBOX_Init(void)
   printf( "\n\r\n\rMailbox is activated" );
 
   /* prepare data to write */
-  for( cnt = 0; cnt < 16; cnt++ )
+  for(cnt = 0; cnt < 16; cnt++)
   {
     awritedata[cnt] = cnt;
   }
 
   /* Check if Mailbox is available */
-  NFC07A1_NFCTAG_ReadMBCtrl_Dyn( NFC07A1_NFCTAG_INSTANCE,&mbctrldynstatus );
+  NFC07A1_NFCTAG_ReadMBCtrl_Dyn(NFC07A1_NFCTAG_INSTANCE, &mbctrldynstatus);
 
   /* If MB is available, write data */
-  if( (mbctrldynstatus.HostPutMsg == 0) && (mbctrldynstatus.RfPutMsg == 0) )
+  if((mbctrldynstatus.HostPutMsg == 0) && (mbctrldynstatus.RfPutMsg == 0))
   {
     printf( "\n\r\n\rMailbox available, write data to it" );
     NFC07A1_NFCTAG_WriteMailboxData( NFC07A1_NFCTAG_INSTANCE, awritedata, 16 );
   }
 
   /* Read length of message */
-  NFC07A1_NFCTAG_ReadMBLength_Dyn(NFC07A1_NFCTAG_INSTANCE, (uint8_t *)&mblength );
+  NFC07A1_NFCTAG_ReadMBLength_Dyn(NFC07A1_NFCTAG_INSTANCE, (uint8_t *)&mblength);
   printf( "\n\r\n\rLength of data write in MBCTRL register : %d", mblength );
   mblength++;
   printf( "\n\rNeed to add 1 to the length as it start at 0 : %d", mblength );
   /* Read mailbox status */
-  NFC07A1_NFCTAG_ReadMBCtrl_Dyn( NFC07A1_NFCTAG_INSTANCE,&mbctrldynstatus );
+  NFC07A1_NFCTAG_ReadMBCtrl_Dyn(NFC07A1_NFCTAG_INSTANCE, &mbctrldynstatus);
   printf( "\n\r\n\rCtrl MB status register value:" );
   printf( "\n\rHost(i2c) Missed Message  = %d", mbctrldynstatus.HostMissMsg );
   printf( "\n\rRF(reader) Missed Message = %d", mbctrldynstatus.RFMissMsg );
@@ -187,10 +187,10 @@ void MX_NFC7_MAILBOX_Init(void)
   printf( "\n\rMailbox Enable            = %d", mbctrldynstatus.MbEnable );
 
   /* Read all data in Mailbox */
-  NFC07A1_NFCTAG_ReadMailboxData( NFC07A1_NFCTAG_INSTANCE,areaddata, 0, mblength );
+  NFC07A1_NFCTAG_ReadMailboxData(NFC07A1_NFCTAG_INSTANCE, areaddata, 0, mblength);
   printf( "\n\r\n\rData read in Mailbox:\n\r" );
   /* prepare data to write */
-  for( cnt = 0; cnt < 16; cnt++ )
+  for(cnt = 0; cnt < 16; cnt++)
   {
     printf( "0x%02X ", areaddata[cnt] );
   }
@@ -199,10 +199,10 @@ void MX_NFC7_MAILBOX_Init(void)
   NFC07A1_NFCTAG_SetMBEN_Dyn(NFC07A1_NFCTAG_INSTANCE);
 
   /* Read all data in Mailbox */
-  NFC07A1_NFCTAG_ReadMailboxData(NFC07A1_NFCTAG_INSTANCE, areaddata, 0, mblength );
+  NFC07A1_NFCTAG_ReadMailboxData(NFC07A1_NFCTAG_INSTANCE, areaddata, 0, mblength);
   printf( "\n\r\n\rClear mailbox by de/reactivate it or by reading it with a reader, read data:\n\r" );
   /* prepare data to write */
-  for( cnt = 0; cnt < 16; cnt++ )
+  for(cnt = 0; cnt < 16; cnt++)
   {
     printf( "0x%02X ", areaddata[cnt] );
   }

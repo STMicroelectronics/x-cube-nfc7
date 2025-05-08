@@ -56,6 +56,11 @@
 			<locationURI>PARENT-1-PROJECT_LOC/Src/stm32l0xx_it.c</locationURI>
 		</link>
 		<link>
+			<name>Application/User/stm32l0xx_nucleo.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Src/stm32l0xx_nucleo.c</locationURI>
+		</link>
+		<link>
 			<name>Application/User/stm32l0xx_nucleo_bus.c</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/Src/stm32l0xx_nucleo_bus.c</locationURI>
@@ -136,14 +141,14 @@
 			<locationURI>PARENT-5-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_rcc_ex.c</locationURI>
 		</link>
 		<link>
-			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_tim.c</name>
+			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_uart.c</name>
 			<type>1</type>
-			<locationURI>PARENT-5-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_tim.c</locationURI>
+			<locationURI>PARENT-5-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_uart.c</locationURI>
 		</link>
 		<link>
-			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_tim_ex.c</name>
+			<name>Drivers/STM32L0xx_HAL_Driver/stm32l0xx_hal_uart_ex.c</name>
 			<type>1</type>
-			<locationURI>PARENT-5-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_tim_ex.c</locationURI>
+			<locationURI>PARENT-5-PROJECT_LOC/Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_uart_ex.c</locationURI>
 		</link>
 		<link>
 			<name>Drivers/BSP/Components/st25dvxxkc.c</name>

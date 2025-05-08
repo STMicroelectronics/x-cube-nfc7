@@ -99,7 +99,7 @@
         <option>
           <name>GBECoreSlave</name>
           <version>31</version>
-          <state>35</state>
+          <state>0</state>
         </option>
         <option>
           <name>OGUseCmsis</name>
@@ -636,7 +636,7 @@
         <option>
           <name>OOCOutputFormat</name>
           <version>3</version>
-          <state>3</state>
+          <state>1</state>
         </option>
         <option>
           <name>OCOutputOverride</name>
@@ -644,7 +644,7 @@
         </option>
         <option>
           <name>OOCOutputFile</name>
-          <state>../../../Binary/EH.bin</state>
+          <state>EH.hex</state>
         </option>
         <option>
           <name>OOCCommandLineProducer</name>
@@ -1171,10 +1171,10 @@
         <name>$PROJ_DIR$\..\..\..\..\..\Drivers\STM32L0xx_HAL_Driver\Src\stm32l0xx_hal_exti.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\Drivers\STM32L0xx_HAL_Driver\Src\stm32l0xx_hal_tim.c</name>
+        <name>$PROJ_DIR$\..\..\..\..\..\Drivers\STM32L0xx_HAL_Driver\Src\stm32l0xx_hal_uart.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\Drivers\STM32L0xx_HAL_Driver\Src\stm32l0xx_hal_tim_ex.c</name>
+        <name>$PROJ_DIR$\..\..\..\..\..\Drivers\STM32L0xx_HAL_Driver\Src\stm32l0xx_hal_uart_ex.c</name>
       </file>
     </group>
   </group>

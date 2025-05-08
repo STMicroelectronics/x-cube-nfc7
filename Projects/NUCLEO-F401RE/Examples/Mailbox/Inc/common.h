@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    common_h.ftl
   * @author  SRA Application Team
-  * @version 1.0.1
-  * @date    27-Apr-2023
+  * @version 2.0.0
+  * @date    25-Jan-2025
   * @brief   Header for main.c module
   ******************************************************************************
   * @attention
@@ -32,8 +32,8 @@
 typedef uint8_t boolean;
 
 /**
- * @brief  GPO status information structure definition
- */
+  * @brief  GPO status information structure definition
+  */
 typedef struct
 {
   uint8_t WritenEEPROM;
@@ -49,7 +49,7 @@ typedef struct
 /* Exported macro ------------------------------------------------------------*/
 #ifndef MIN
 #define MIN(x, y) (((x) < (y)) ? (x) : (y))
-#endif
+#endif  /*endif for MIN*/
 
 #undef FAIL
 #define FAIL 0
@@ -73,8 +73,8 @@ typedef struct
 #define MCU_FW_VERSION_MINOR              0
 #define MCU_FW_VERSION_REVISION           0
 #define MCU_FW_VERSION                    STRINGIZE(MCU_FW_VERSION_MAJOR) "." \
-                                          STRINGIZE(MCU_FW_VERSION_MINOR) "." \
-                                          STRINGIZE(MCU_FW_VERSION_REVISION)
+  STRINGIZE(MCU_FW_VERSION_MINOR) "." \
+  STRINGIZE(MCU_FW_VERSION_REVISION)
 
 /* Exported functions ------------------------------------------------------- */
 

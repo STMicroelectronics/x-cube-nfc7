@@ -1,9 +1,8 @@
-
 /**
   ******************************************************************************
   * File Name          :  app_nfc7.c
   * Description        : This file provides code for the configuration
-  *                      of the STMicroelectronics.X-CUBE-NFC7.1.0.1 instances.
+  *                      of the STMicroelectronics.X-CUBE-NFC7.2.0.0 instances.
   ******************************************************************************
   * @attention
   *
@@ -18,7 +17,7 @@
   */
 
 #ifdef __cplusplus
- extern "C" {
+extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
@@ -28,6 +27,8 @@
 /* Includes ------------------------------------------------------------------*/
 #include "nfc07a1_nfctag.h"
 #include "stm32f4xx_nucleo.h"
+#include <stdio.h>
+#include <string.h>
 
 /** @defgroup ST25_Nucleo
   * @{
@@ -108,6 +109,12 @@ void MX_NFC7_EH_Init(void)
   NFC07A1_LED_On( YELLOW_LED );
   HAL_Delay( 300 );
 
+ /* Init UART for display message on console */
+  BSP_COM_Init(COM1);
+  printf("------------------------------------------");
+  printf("\n\r***** Welcome to x-cube-nfc7 example *****");
+  printf("\n\r------------------------------------------");
+
   /* Init ST25DVxxKC driver */
   while( NFC07A1_NFCTAG_Init(NFC07A1_NFCTAG_INSTANCE) != NFCTAG_OK );
 
@@ -128,11 +135,13 @@ void MX_NFC7_EH_Init(void)
   {
     /* Energy Harvesting is set after each boot, LED 1 is on */
     NFC07A1_LED_On( GREEN_LED );
+	printf("\n\r\n\rEnergy Harvesting is activated after boot.");
   }
   else
   {
     /* Energy Harvesting is reset after each boot, LED 1 is off */
     NFC07A1_LED_Off( GREEN_LED );
+	printf("\n\r\n\rEnergy Harvesting is activated by user.");
   }
 
   /* Check status of Energy Harvesting static configuration */
@@ -141,11 +150,13 @@ void MX_NFC7_EH_Init(void)
   {
     /* Energy Harvesting is disabled, LED 2 is on */
     NFC07A1_LED_Off( BLUE_LED );
+	printf("\n\r\n\rEnergy Harvesting is currently disabled.");
   }
   else
   {
     /* Energy Harvesting is activated, LED 2 is on */
     NFC07A1_LED_On( BLUE_LED );
+	printf("\n\r\n\rEnergy Harvesting is activated.");
   }
 
 }
@@ -206,6 +217,7 @@ void MX_NFC7_EH_Process(void)
         value_eh_mode = ST25DVXXKC_EH_ON_DEMAND;
         NFC07A1_NFCTAG_WriteEHMode(NFC07A1_NFCTAG_INSTANCE, value_eh_mode );
         NFC07A1_LED_Off( GREEN_LED );
+		printf("\n\r\n\rEnergy Harvesting won't be activated after boot.");
       }
       else
       {
@@ -213,6 +225,7 @@ void MX_NFC7_EH_Process(void)
         value_eh_mode = ST25DVXXKC_EH_ACTIVE_AFTER_BOOT;
         NFC07A1_NFCTAG_WriteEHMode(NFC07A1_NFCTAG_INSTANCE, value_eh_mode );
         NFC07A1_LED_On( GREEN_LED );
+		printf("\n\r\n\rEnergy Harvesting will now be activated after boot.");
       }
     }
     else
@@ -231,12 +244,14 @@ void MX_NFC7_EH_Process(void)
         /* Enable energy harvesting */
         NFC07A1_NFCTAG_SetEHENMode_Dyn(NFC07A1_NFCTAG_INSTANCE);
         NFC07A1_LED_On( BLUE_LED );
+		printf("\n\r\n\rEnergy Harvesting is now activated.");
       }
       else
       {
         /* Disable energy harvesting */
         NFC07A1_NFCTAG_ResetEHENMode_Dyn(NFC07A1_NFCTAG_INSTANCE);
         NFC07A1_LED_Off( BLUE_LED );
+		printf("\n\r\n\rEnergy Harvesting is now disabled.");
       }
     }
   }

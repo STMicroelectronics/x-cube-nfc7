@@ -11,13 +11,9 @@
       <name>General</name>
       <archiveVersion>3</archiveVersion>
       <data>
-        <version>34</version>
+        <version>31</version>
         <wantNonLocal>1</wantNonLocal>
         <debug>1</debug>
-        <option>
-          <name>BrowseInfoPath</name>
-          <state>GPO\BrowseInfo</state>
-        </option>
         <option>
           <name>ExePath</name>
           <state>GPO/Exe</state>
@@ -70,7 +66,15 @@
         </option>
         <option>
           <name>OGLastSavedByProductVersion</name>
-          <state>9.20.1.43525</state>
+          <state>8.32.3.20186</state>
+        </option>
+        <option>
+          <name>GeneralEnableMisra</name>
+          <state>0</state>
+        </option>
+        <option>
+          <name>GeneralMisraVerbose</name>
+          <state>0</state>
         </option>
         <option>
           <name>OGChipSelectEditMenu</name>
@@ -93,13 +97,27 @@
           <state>0</state>
         </option>
         <option>
+          <name>GeneralMisraRules98</name>
+          <version>0</version>
+          <state>1000111110110101101110011100111111101110011011000101110111101101100111111111111100110011111001110111001111111111111111111111111</state>
+        </option>
+        <option>
+          <name>GeneralMisraVer</name>
+          <state>0</state>
+        </option>
+        <option>
+          <name>GeneralMisraRules04</name>
+          <version>0</version>
+          <state>111101110010111111111000110111111111111111111111111110010111101111010101111111111111111111111111101111111011111001111011111011111111111111111</state>
+        </option>
+        <option>
           <name>RTConfigPath2</name>
           <state>$TOOLKIT_DIR$\inc\c\DLib_Config_Full.h</state>
         </option>
         <option>
           <name>GBECoreSlave</name>
-          <version>31</version>
-          <state>35</state>
+          <version>27</version>
+          <state></state>
         </option>
         <option>
           <name>OGUseCmsis</name>
@@ -115,22 +133,22 @@
         </option>
         <option>
           <name>CoreVariant</name>
-          <version>31</version>
-          <state>35</state>
+          <version>27</version>
+          <state>59</state>
         </option>
         <option>
           <name>GFPUDeviceSlave</name>
-          <state>STM32L053R8	ST STM32L053R8</state>
+          <state></state>
         </option>
         <option>
           <name>FPU2</name>
           <version>0</version>
-          <state>0</state>
+          <state>5</state>
         </option>
         <option>
           <name>NrRegs</name>
           <version>0</version>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>NEON</name>
@@ -138,8 +156,8 @@
         </option>
         <option>
           <name>GFPUCoreSlave2</name>
-          <version>31</version>
-          <state>35</state>
+          <version>27</version>
+          <state>59</state>
         </option>
         <option>
           <name>OGCMSISPackSelectDevice</name>
@@ -191,25 +209,13 @@
           <version>0</version>
           <state>1</state>
         </option>
-        <option>
-          <name>OGAarch64Abi</name>
-          <state>0</state>
-        </option>
-        <option>
-          <name>OG_32_64Device</name>
-          <state>0</state>
-        </option>
-        <option>
-          <name>BuildFilesPath</name>
-          <state>GPO</state>
-        </option>
       </data>
     </settings>
     <settings>
       <name>ICCARM</name>
       <archiveVersion>2</archiveVersion>
       <data>
-        <version>37</version>
+        <version>35</version>
         <wantNonLocal>1</wantNonLocal>
         <debug>1</debug>
         <option>
@@ -220,6 +226,7 @@
           <name>CCDefines</name>
           <state>USE_HAL_DRIVER</state>
           <state>STM32L053xx</state>
+          <state></state>
         </option>
         <option>
           <name>CCPreprocFile</name>
@@ -339,6 +346,10 @@
           <state></state>
         </option>
         <option>
+          <name>CompilerMisraOverride</name>
+          <state>0</state>
+        </option>
+        <option>
           <name>CCIncludePath2</name>
           <state>$PROJ_DIR$/../Inc</state>
           <state>$PROJ_DIR$/../../../../../Drivers/STM32L0xx_HAL_Driver/Inc</state>
@@ -372,6 +383,16 @@
         <option>
           <name>CCOptLevelSlave</name>
           <state>3</state>
+        </option>
+        <option>
+          <name>CompilerMisraRules98</name>
+          <version>0</version>
+          <state>1000111110110101101110011100111111101110011011000101110111101101100111111111111100110011111001110111001111111111111111111111111</state>
+        </option>
+        <option>
+          <name>CompilerMisraRules04</name>
+          <version>0</version>
+          <state>111101110010111111111000110111111111111111111111111110010111101111010101111111111111111111111111101111111011111001111011111011111111111111111</state>
         </option>
         <option>
           <name>CCPosIndRopi</name>
@@ -454,17 +475,13 @@
           <name>OICompilerExtraOption</name>
           <state>1</state>
         </option>
-        <option>
-          <name>CCStackProtection</name>
-          <state>0</state>
-        </option>
       </data>
     </settings>
     <settings>
       <name>AARM</name>
       <archiveVersion>2</archiveVersion>
       <data>
-        <version>11</version>
+        <version>10</version>
         <wantNonLocal>1</wantNonLocal>
         <debug>1</debug>
         <option>
@@ -620,10 +637,6 @@
           <name>AsmNoLiteralPool</name>
           <state>0</state>
         </option>
-        <option>
-          <name>PreInclude</name>
-          <state></state>
-        </option>
       </data>
     </settings>
     <settings>
@@ -636,7 +649,7 @@
         <option>
           <name>OOCOutputFormat</name>
           <version>3</version>
-          <state>3</state>
+          <state>1</state>
         </option>
         <option>
           <name>OCOutputOverride</name>
@@ -644,7 +657,7 @@
         </option>
         <option>
           <name>OOCOutputFile</name>
-          <state>../../../Binary/GPO.bin</state>
+          <state>GPO.hex</state>
         </option>
         <option>
           <name>OOCCommandLineProducer</name>
@@ -663,8 +676,12 @@
         <extensions></extensions>
         <cmdline></cmdline>
         <hasPrio>0</hasPrio>
-        <buildSequence>inputOutputBased</buildSequence>
       </data>
+    </settings>
+    <settings>
+      <name>BICOMP</name>
+      <archiveVersion>0</archiveVersion>
+      <data></data>
     </settings>
     <settings>
       <name>BUILDACTION</name>
@@ -678,7 +695,7 @@
       <name>ILINK</name>
       <archiveVersion>0</archiveVersion>
       <data>
-        <version>26</version>
+        <version>22</version>
         <wantNonLocal>1</wantNonLocal>
         <debug>1</debug>
         <option>
@@ -688,6 +705,10 @@
         <option>
           <name>IlinkLibIOConfig</name>
           <state>1</state>
+        </option>
+        <option>
+          <name>XLinkMisraHandler</name>
+          <state>0</state>
         </option>
         <option>
           <name>IlinkInputFileSlave</name>
@@ -994,50 +1015,6 @@
           <name>OILinkExtraOption</name>
           <state>1</state>
         </option>
-        <option>
-          <name>IlinkRawBinaryFile2</name>
-          <state></state>
-        </option>
-        <option>
-          <name>IlinkRawBinarySymbol2</name>
-          <state></state>
-        </option>
-        <option>
-          <name>IlinkRawBinarySegment2</name>
-          <state></state>
-        </option>
-        <option>
-          <name>IlinkRawBinaryAlign2</name>
-          <state></state>
-        </option>
-        <option>
-          <name>IlinkLogCrtRoutineSelection</name>
-          <state>0</state>
-        </option>
-        <option>
-          <name>IlinkLogFragmentInfo</name>
-          <state>0</state>
-        </option>
-        <option>
-          <name>IlinkLogInlining</name>
-          <state>0</state>
-        </option>
-        <option>
-          <name>IlinkLogMerging</name>
-          <state>0</state>
-        </option>
-        <option>
-          <name>IlinkDemangle</name>
-          <state>0</state>
-        </option>
-        <option>
-          <name>IlinkWrapperFileEnable</name>
-          <state>0</state>
-        </option>
-        <option>
-          <name>IlinkWrapperFile</name>
-          <state></state>
-        </option>
       </data>
     </settings>
     <settings>
@@ -1062,6 +1039,11 @@
       </data>
     </settings>
     <settings>
+      <name>BILINK</name>
+      <archiveVersion>0</archiveVersion>
+      <data></data>
+    </settings>
+    <settings>
       <name>Coder</name>
       <archiveVersion>0</archiveVersion>
       <data></data>
@@ -1072,25 +1054,28 @@
     <group>
       <name>EWARM</name>
       <file>
-        <name>$PROJ_DIR$\startup_stm32l053xx.s</name>
+        <name>$PROJ_DIR$/startup_stm32l053xx.s</name>
       </file>
     </group>
     <group>
       <name>User</name>
       <file>
-        <name>$PROJ_DIR$\..\Src\main.c</name>
+        <name>$PROJ_DIR$/../Src/main.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\Src\app_nfc7.c</name>
+        <name>$PROJ_DIR$/../Src/app_nfc7.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\Src\stm32l0xx_nucleo_bus.c</name>
+        <name>$PROJ_DIR$/../Src/stm32l0xx_nucleo_bus.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\Src\stm32l0xx_it.c</name>
+        <name>$PROJ_DIR$/../Src/stm32l0xx_nucleo.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\Src\stm32l0xx_hal_msp.c</name>
+        <name>$PROJ_DIR$/../Src/stm32l0xx_it.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$/../Src/stm32l0xx_hal_msp.c</name>
       </file>
     </group>
   </group>
@@ -1101,77 +1086,77 @@
       <group>
         <name>Components</name>
         <file>
-          <name>$PROJ_DIR$\..\..\..\..\..\Drivers\BSP\Components\st25dvxxkc\st25dvxxkc_reg.c</name>
+          <name>$PROJ_DIR$/../../../../../Drivers/BSP/Components/st25dvxxkc/st25dvxxkc_reg.c</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\..\..\..\Drivers\BSP\Components\st25dvxxkc\st25dvxxkc.c</name>
+          <name>$PROJ_DIR$/../../../../../Drivers/BSP/Components/st25dvxxkc/st25dvxxkc.c</name>
         </file>
       </group>
       <group>
         <name>NFC07A1</name>
         <file>
-          <name>$PROJ_DIR$\..\..\..\..\..\Drivers\BSP\NFC07A1\nfc07a1.c</name>
+          <name>$PROJ_DIR$/../../../../../Drivers/BSP/NFC07A1/nfc07a1.c</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\..\..\..\Drivers\BSP\NFC07A1\nfc07a1_nfctag.c</name>
+          <name>$PROJ_DIR$/../../../../../Drivers/BSP/NFC07A1/nfc07a1_nfctag.c</name>
         </file>
       </group>
     </group>
     <group>
-      <name>CMSIS</name>
+      <name>STM32L0xx_HAL_Driver</name>
       <file>
-        <name>$PROJ_DIR$\..\Src\system_stm32l0xx.c</name>
+        <name>$PROJ_DIR$/../../../../../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_i2c.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$/../../../../../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_i2c_ex.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$/../../../../../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$/../../../../../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_rcc.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$/../../../../../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_rcc_ex.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$/../../../../../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_flash_ramfunc.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$/../../../../../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_flash.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$/../../../../../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_flash_ex.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$/../../../../../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_gpio.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$/../../../../../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_dma.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$/../../../../../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_pwr.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$/../../../../../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_pwr_ex.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$/../../../../../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_cortex.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$/../../../../../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_exti.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$/../../../../../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_uart.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$/../../../../../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_uart_ex.c</name>
       </file>
     </group>
     <group>
-      <name>STM32L0xx_HAL_Driver</name>
+      <name>CMSIS</name>
       <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\Drivers\STM32L0xx_HAL_Driver\Src\stm32l0xx_hal_i2c.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\Drivers\STM32L0xx_HAL_Driver\Src\stm32l0xx_hal_i2c_ex.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\Drivers\STM32L0xx_HAL_Driver\Src\stm32l0xx_hal.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\Drivers\STM32L0xx_HAL_Driver\Src\stm32l0xx_hal_rcc.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\Drivers\STM32L0xx_HAL_Driver\Src\stm32l0xx_hal_rcc_ex.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\Drivers\STM32L0xx_HAL_Driver\Src\stm32l0xx_hal_flash_ramfunc.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\Drivers\STM32L0xx_HAL_Driver\Src\stm32l0xx_hal_flash.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\Drivers\STM32L0xx_HAL_Driver\Src\stm32l0xx_hal_flash_ex.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\Drivers\STM32L0xx_HAL_Driver\Src\stm32l0xx_hal_gpio.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\Drivers\STM32L0xx_HAL_Driver\Src\stm32l0xx_hal_dma.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\Drivers\STM32L0xx_HAL_Driver\Src\stm32l0xx_hal_pwr.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\Drivers\STM32L0xx_HAL_Driver\Src\stm32l0xx_hal_pwr_ex.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\Drivers\STM32L0xx_HAL_Driver\Src\stm32l0xx_hal_cortex.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\Drivers\STM32L0xx_HAL_Driver\Src\stm32l0xx_hal_exti.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\Drivers\STM32L0xx_HAL_Driver\Src\stm32l0xx_hal_tim.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\Drivers\STM32L0xx_HAL_Driver\Src\stm32l0xx_hal_tim_ex.c</name>
+        <name>$PROJ_DIR$/../Src/system_stm32l0xx.c</name>
       </file>
     </group>
   </group>

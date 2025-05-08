@@ -6,7 +6,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2021 STMicroelectronics.
+  * Copyright (c) 2025 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -113,6 +113,22 @@
  * @{
  */
 /**
+ * @brief Definition for COM portx, connected to USART2
+ */
+
+#define BUS_USART2_INSTANCE USART2
+#define BUS_USART2_TX_GPIO_AF GPIO_AF4_USART2
+#define BUS_USART2_TX_GPIO_PIN GPIO_PIN_2
+#define BUS_USART2_TX_GPIO_CLK_ENABLE() __HAL_RCC_GPIOA_CLK_ENABLE()
+#define BUS_USART2_TX_GPIO_PORT GPIOA
+#define BUS_USART2_TX_GPIO_CLK_DISABLE() __HAL_RCC_GPIOA_CLK_DISABLE()
+#define BUS_USART2_RX_GPIO_PORT GPIOA
+#define BUS_USART2_RX_GPIO_CLK_ENABLE() __HAL_RCC_GPIOA_CLK_ENABLE()
+#define BUS_USART2_RX_GPIO_CLK_DISABLE() __HAL_RCC_GPIOA_CLK_DISABLE()
+#define BUS_USART2_RX_GPIO_PIN GPIO_PIN_3
+#define BUS_USART2_RX_GPIO_AF GPIO_AF4_USART2
+
+/**
  * @}
  */
 
@@ -193,10 +209,24 @@ typedef struct
 #define MX_UART_StopBitsTypeDef      COM_StopBitsTypeDef
 #define MX_UART_ParityTypeDef        COM_ParityTypeDef
 #define MX_UART_HwFlowCtlTypeDef     COM_HwFlowCtlTypeDef
+#if (USE_HAL_UART_REGISTER_CALLBACKS == 1U)
+typedef struct
+{
+  void (* pMspInitCb)(UART_HandleTypeDef *);
+  void (* pMspDeInitCb)(UART_HandleTypeDef *);
+} BSP_COM_Cb_t;
+#endif /* (USE_HAL_UART_REGISTER_CALLBACKS == 1U) */
 
 /**
  * @}
  */
+
+#define COMn                             1U
+#define COM1_UART                        USART2
+
+#define COM_POLL_TIMEOUT                 1000
+extern UART_HandleTypeDef hcom_uart[COMn];
+#define  huart2 hcom_uart[COM1]
 
 /**
  * @}
@@ -227,7 +257,20 @@ int32_t  BSP_PB_Init(Button_TypeDef Button, ButtonMode_TypeDef ButtonMode);
 int32_t  BSP_PB_DeInit(Button_TypeDef Button);
 int32_t  BSP_PB_GetState(Button_TypeDef Button);
 void     BSP_PB_Callback(Button_TypeDef Button);
-void     BSP_PB_IRQHandler (Button_TypeDef Button);
+void     BSP_PB_IRQHandler(Button_TypeDef Button);
+#if (USE_BSP_COM_FEATURE > 0)
+int32_t  BSP_COM_Init(COM_TypeDef COM);
+int32_t  BSP_COM_DeInit(COM_TypeDef COM);
+#endif
+
+#if (USE_COM_LOG > 0)
+int32_t  BSP_COM_SelectLogPort(COM_TypeDef COM);
+#endif
+
+#if (USE_HAL_UART_REGISTER_CALLBACKS == 1U)
+int32_t BSP_COM_RegisterDefaultMspCallbacks(COM_TypeDef COM);
+int32_t BSP_COM_RegisterMspCallbacks(COM_TypeDef COM , BSP_COM_Cb_t *Callback);
+#endif /* USE_HAL_UART_REGISTER_CALLBACKS */
 
 /**
  * @}

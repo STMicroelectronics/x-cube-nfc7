@@ -1,9 +1,8 @@
-
 /**
   ******************************************************************************
   * File Name          :  app_nfc7.c
   * Description        : This file provides code for the configuration
-  *                      of the STMicroelectronics.X-CUBE-NFC7.1.0.1 instances.
+  *                      of the STMicroelectronics.X-CUBE-NFC7.2.0.0 instances.
   ******************************************************************************
   * @attention
   *
@@ -18,7 +17,7 @@
   */
 
 #ifdef __cplusplus
- extern "C" {
+extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
@@ -27,8 +26,11 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "common.h"
-#include "tagtype5_wrapper.h"
-#include "lib_NDEF_URI.h"
+#include "ndef_config.h"
+#include "ndef_nfcv_wrapper.h"
+#include "ndef_message.h"
+#include "ndef_types.h"
+#include <stdio.h>
 
 /** @defgroup ST25_Nucleo
   * @{
@@ -43,9 +45,7 @@
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 /* Global variables ----------------------------------------------------------*/
-sURI_Info URI;
-
-extern sCCFileInfo CCFileStruct;
+ndefContext NdefCtx;
 
 /* Private functions ---------------------------------------------------------*/
 void MX_NFC7_NDEF_URI_Init(void);
@@ -87,59 +87,105 @@ void MX_NFC7_Process(void)
 
 void MX_NFC7_NDEF_URI_Init(void)
 {
-	  /******************************************************************************/
-  /* Configuration of X-NUCLEO-NFC02A1                                          */
+  uint8_t         rawMessageBuf[30];
+  ndefStatus      err;
+  ndefConstBuffer bufUri;
+  ndefType        uri;
+  ndefRecord      record;
+  ndefMessage     message;
+  ndefBuffer      bufRawMessage;
+  static uint8_t  ndefURI[] = "st.com/st25-demo";
+
+  /******************************************************************************/
+  /* Configuration of X-NUCLEO-NFC07A1                                          */
   /******************************************************************************/
   /* Init of the Leds on X-NUCLEO-NFC07A1 board */
-  NFC07A1_LED_Init(GREEN_LED );
-  NFC07A1_LED_Init(BLUE_LED );
-  NFC07A1_LED_Init(YELLOW_LED );
-  NFC07A1_LED_On( GREEN_LED );
-  HAL_Delay( 300 );
-  NFC07A1_LED_On( BLUE_LED );
-  HAL_Delay( 300 );
-  NFC07A1_LED_On( YELLOW_LED );
-  HAL_Delay( 300 );
+  NFC07A1_LED_Init(GREEN_LED);
+  NFC07A1_LED_Init(BLUE_LED);
+  NFC07A1_LED_Init(YELLOW_LED);
 
-  /* Init ST25DVXXKC driver */
-  while( NFC07A1_NFCTAG_Init(NFC07A1_NFCTAG_INSTANCE) != NFCTAG_OK );
+  NFC07A1_LED_On(GREEN_LED);
+  HAL_Delay(300);
+  NFC07A1_LED_On(BLUE_LED);
+  HAL_Delay(300);
+  NFC07A1_LED_On(YELLOW_LED);
+  HAL_Delay(300);
 
+  /* Init UART for display message on console */
+  BSP_COM_Init(COM1);
+
+  printf("------------------------------------------");
+  printf("\n\r***** Welcome to x-cube-nfc7 example *****");
+  printf("\n\r------------------------------------------");
+
+  /* Init ST25DVxxKC driver */
+  while (NFC07A1_NFCTAG_Init(NFC07A1_NFCTAG_INSTANCE) != NFCTAG_OK);
+  printf("\n\r\n\rST25DVxxKC initialization succeeded!");
   /* Reset Mailbox enable to allow write to EEPROM */
   NFC07A1_NFCTAG_ResetMBEN_Dyn(NFC07A1_NFCTAG_INSTANCE);
 
-  NfcTag_SelectProtocol(NFCTAG_TYPE5);
-
   /* Check if no NDEF detected, init mem in Tag Type 5 */
-  if( NfcType5_NDEFDetection( ) != NDEF_OK )
+  ndefT5TagContextInitialization(&NdefCtx);
+
+  if (ndefT5TagNdefDetect(&NdefCtx) != ERR_NONE)
   {
-    CCFileStruct.MagicNumber = NFCT5_MAGICNUMBER_E1_CCFILE;
-    CCFileStruct.Version = NFCT5_VERSION_V1_0;
-    CCFileStruct.MemorySize = ( ST25DVXXKC_MAX_SIZE / 8 ) & 0xFF;
-    CCFileStruct.TT5Tag = 0x05;
-    /* Init of the Type Tag 5 component (M24LR) */
-    while( NfcType5_TT5Init( ) != NFCTAG_OK );
+    if (ndefT5TagFormat(&NdefCtx, NULL, 1) != ERR_NONE)
+    {
+      printf("CCFILE initialization failed!");
+    }
+    else
+    {
+      if (ndefT5TagNdefDetect(&NdefCtx) != ERR_NONE)
+      {
+        printf("NDEF formatting error, Tag cannot be initialized!");
+      }
+    }
   }
 
   /* Init done */
-  NFC07A1_LED_Off( GREEN_LED );
-  HAL_Delay( 300 );
-  NFC07A1_LED_Off( BLUE_LED );
-  HAL_Delay( 300 );
-  NFC07A1_LED_Off( YELLOW_LED );
-  HAL_Delay( 300 );
+  NFC07A1_LED_Off(GREEN_LED);
+  HAL_Delay(300);
+  NFC07A1_LED_Off(BLUE_LED);
+  HAL_Delay(300);
+  NFC07A1_LED_Off(YELLOW_LED);
+  HAL_Delay(300);
 
-  /* Prepare URI NDEF message content */
-  strcpy( URI.protocol,URI_ID_0x01_STRING );
-  strcpy( URI.URI_Message,"st.com/st25-demo" );
-  strcpy( URI.Information,"\0" );
+  /* Prepare URI NDEF record content */
+  bufUri.buffer = ndefURI;
+  bufUri.length = strlen((char *)ndefURI);
 
-  /* Write NDEF to EEPROM */
-  HAL_Delay(5);
-  while( NDEF_WriteURI( &URI ) != NDEF_OK );
+  err = ndefRtdUriInit(&uri, NDEF_URI_PREFIX_HTTP_WWW, &bufUri); /* Initialize URI type structure */
 
-  /* Set the LED3 on to indicate Programing done */
-  NFC07A1_LED_On( YELLOW_LED );
+  /* Fill record with URI info */
+  err |= ndefRtdUriToRecord(&uri, &record); /* Encode URI Record */
 
+  err |= ndefMessageInit(&message);
+
+  /* Added record to NDEF message */
+  err |= ndefMessageAppend(&message, &record); /* Append URI to message */
+
+  bufRawMessage.buffer = rawMessageBuf;
+  bufRawMessage.length = sizeof(rawMessageBuf);
+  err |= ndefMessageEncode(&message, &bufRawMessage); /* Encode the message to the raw buffer */
+
+  /* Write NDEF message to tag */
+  err |= ndefT5TagWriteRawMessage(&NdefCtx, bufRawMessage.buffer, bufRawMessage.length);
+
+  if (err != ERR_NONE)
+  {
+    printf("\n\r\n\rWrite error, URL has not been written!");
+  }
+  else
+  {
+    printf("\n\r\n\rURI NDEF message written to memory : www.st.com/st25-demo.");
+  }
+
+  /* Set the LED3 on to indicate Programming done */
+  NFC07A1_LED_On(YELLOW_LED);
+
+  printf("\n\r\n\r------------------------------------------");
+  printf("\n\r*****         end of example         *****");
+  printf("\n\r------------------------------------------\n\r");
 }
 
 /**
